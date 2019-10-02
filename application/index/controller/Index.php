@@ -1,8 +1,8 @@
 <?php
 namespace app\index\controller;
-use app\index\model\User;
 use think\Controller;
 use think\Request;
+use think\Db;
 
 class Index extends Controller
 {
@@ -23,17 +23,12 @@ class Index extends Controller
     	$result->sayHello($say);
     }
 
-    public function user()//model的使用
+    public function user()
     {
-    	$user = new User();
-    	$result = $User->save($data);
-		if($result){
-		//设置成功后跳转页面的地址，默认的返回页面是$_SERVER['HTTP_REFERER']
-			$this->success('新增成功', 'User/list');
-		}else{
-		//错误页面的默认跳转页面是返回前一页，通常不需要设置
-			$this->error('新增失败');
-		}
+    	// $search=db('user')->where('id',1)->find();
+    	$search=Db::connect('db_config1')->table('think_user')->where('id',1)->find();//必须添加
+    	var_dump($search);
+    	exit();
     }
 
     public function call()//request请求url相关资源，添加use think\Request;
