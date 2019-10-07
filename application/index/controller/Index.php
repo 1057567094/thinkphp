@@ -13,10 +13,14 @@ class Index extends Controller
 
     public function index()//添加了use think\Controller还有class Index extends Controller才有页面渲染
     {
+    	$this->assign([
+			'name' => 'ThinkPHP',
+			'email' => 'thinkphp@qq.com'
+			]);
         return $this->fetch('index');
     }
 
-    public function test()//类的使用
+    public function test()//类的使用，在extend里边添加文件夹里边放类
     {   
     	$result = new \my\Test();
     	$say = $this->request->get('say');
@@ -26,7 +30,7 @@ class Index extends Controller
     public function user()
     {
     	// $search=db('user')->where('id',1)->find();
-    	$search=Db::connect('db_config1')->table('think_user')->where('id',1)->find();//必须添加
+    	$search=Db::connect('db_config1')->table('think_user')->field('id,name,password')->find();//必须添加use think\Db;且Db的table不能省前缀
     	var_dump($search);
     	exit();
     }
