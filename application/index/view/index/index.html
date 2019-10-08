@@ -1,9 +1,18 @@
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-	<title>{$name}</title>
-</head>
-<body>
-<h1>hahahahahahaha</h1>
-</body>
-</html>
+{extend name="public/base" /}<!-- extend拓展是用name -->
+
+{block name="seo"}
+<title>{$title}</title>
+<meta name="keywords" content="{$keywords|default='页面关键字'}">
+{/block}
+
+{block name="menu"}
+<p>menu同时存在时替代base原设定</p>
+{/block}
+
+{block name="content"}
+<p><input type="checkbox">这是内容content</p>
+{/block}
+
+{block name="javascript"}
+
+{/block}

@@ -1,0 +1,27 @@
+{include file="public/meta" /}<!-- 作为公共外部css文件引用 -->
+
+{block name="seo"}<!-- 包含title以及关键字描述，每个页面不同 -->
+	网页seo标题、信息、关键字
+{/block}
+</head>
+<body>
+
+{block name="header"}<!-- html头部公共div块 -->
+	{include file="public/header" /}
+{/block}
+
+{block name="menu"}<!-- html菜单栏公共div块 -->
+	{include file="public/menu" /}
+{/block}
+
+{block name="content"}<!-- 页面内容，每个页面不同 -->
+	网页内容
+{/block}
+
+{include file="public/footer" /}<!-- html尾部公共div块 -->
+
+{block name="javascript"}<!-- javascript，每个页面不同 -->
+	javascript函数引用
+{/block}
+</body>
+</html>

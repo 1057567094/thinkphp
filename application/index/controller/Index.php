@@ -14,8 +14,8 @@ class Index extends Controller
     public function index()//添加了use think\Controller还有class Index extends Controller才有页面渲染
     {
     	$this->assign([
-			'name' => 'ThinkPHP',
-			'email' => 'thinkphp@qq.com'
+			'title' => '这是标题',
+			'keyword' => 'thinkphp@qq.com'
 			]);
         return $this->fetch('index');
     }

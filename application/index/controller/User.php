@@ -23,8 +23,19 @@ class User extends Controller
 		// Db::table('think_user')->whereTime('birthday', 'not between', ['1970-10-1', '20
 		// 00-10-1'])->select();
 		$user = new UserModel();//model查询数据库
-		$result = $user->where('id',1)->find();
-		var_dump($result);
-		exit();
+		$result = $user->all();
+		foreach ($result as $key => $value){
+			$data = [
+				'id'=>$value->id,
+				'name'=>$value->name,
+				'password'=>$value->password,
+				'status'=>$value->status,
+				'button'=>$value->button,
+				];
+			$list[] = $data;
+		}
+		$this->assign('list',$list);
+		$this->assign('title','这是标题');
+		return $this->fetch('login');
 	}
 }

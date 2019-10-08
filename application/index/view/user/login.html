@@ -1,0 +1,26 @@
+{extend name="public/base" /}<!-- extend拓展是用name -->
+
+{block name="seo"}
+	<title>{$title}</title>
+{/block}
+
+
+{block name="content"}
+	这是内容content:<br>
+	{volist name="list" id="vo"}<!-- volist循环输出，后台查询数据库用select或者all不是用find -->
+		{$vo.id}:{$vo.name},{$vo.password}<br>
+	{/volist}<br>
+
+	{foreach $list as $vo}
+		{$vo.id}:{$vo.name},{$vo.password}{$vo.status}
+		{if condition="$vo.button eq 1"}
+			已启用
+		{else /}
+			已停用
+		{/if}<br>
+	{/foreach}<br>
+{/block}
+
+{block name="javascript"}
+
+{/block}
