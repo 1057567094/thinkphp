@@ -44,24 +44,27 @@ class User extends Controller
 	{
 		$result = $this->validate(
 		[
-		    'name' => 'ddd',
+		    'name' => 'ddd___',
 		    'age' => 'sss',
 		    'email' => 'thinkphp',
+		    'accepted'=> '',
 		],
 		[
-		    'name' => 'require|max:25',
+		    'name' => 'require|max:25|chsAlphaNum',
 		    'age' => 'number|between:1,120',
 		    'email'  => 'email',
+		    'accepted' => ['regex'=>'/^(yes|on|1)$/i'],//正则表达式使用要求数组
 		],
 		[
 			'name.require' => '名称必须',
 			'name.max' => '名称最多不能超过25个字符',
+			'name.chsAlphaNum' => '名称只能是汉字、字母和数字',
 			'age.number' => '年龄必须是数字',
 			'age.between' => '年龄只能在1-120之间',
 			'email' => '邮箱格式错误',
 		]);
 		if(true !== $result){
-		  	// 验证失败 输出错误信息 格式为string
+		  	// 验证失败 输出错误信息 格式为string 而且是按顺序返回一条错误
 		  	print($result);
 		}
 	}
